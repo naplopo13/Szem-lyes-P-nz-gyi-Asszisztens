@@ -88,3 +88,18 @@ public class Menurendszer {
             }
         }
     }
+
+    private static double beolvasDouble() {
+        while (true) {
+            try {
+                double szam = Double.parseDouble(sc.nextLine());
+                if (szam < 0) {
+                    System.out.print(RED + "Az összeg nem lehet negatív! Adj meg újat: " + RESET);
+                    continue;
+                }
+                return szam;
+            } catch (NumberFormatException e) {
+                System.out.print(RED + "Hibás formátum! Érvényes összeget adj meg: " + RESET);
+            }
+        }
+    }
