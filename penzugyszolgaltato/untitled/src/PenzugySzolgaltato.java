@@ -46,3 +46,20 @@ public class PenzugySzolgaltato {
     public double getOsszKoltseg() {
         return tranzakciok.stream().mapToDouble(Tranzakcio::getOsszeg).sum();
     }
+
+    public String getAsciiDiagram(String kategoria) {
+        double koltes = getKoltsegKategoriaSzerint(kategoria);
+        double limit = getLimitKategoriaSzerint(kategoria);
+
+        if (limit == 0) return kategoria + ": " + koltes + " Ft (Nincs limit beállítva)";
+
+        double szazalek = (koltes / limit) * 100;
+        int maxKarakter = 10;
+        int kiertekeltKarakter = (int) Math.min(maxKarakter, Math.round(szazalek / 10));
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < maxKarakter; i++) {
+            if (i < kiertekeltKarakter) sb.append("#");
+            else sb.append(".");
+        }
