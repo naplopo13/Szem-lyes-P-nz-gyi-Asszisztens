@@ -103,3 +103,8 @@ public class Menurendszer {
             }
         }
     }
+    private static void KijelzoTiszta() {
+        System.out.print("\033[H\033[2J");
+
+    }
+}
