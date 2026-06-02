@@ -21,3 +21,10 @@ public class PenzugySzolgaltato {
         limitek.add(new Limit(kategoria, maxOsszeg));
         dataManager.mentLimitek(limitek);
     }
+
+    public double getKoltsegKategoriaSzerint(String kategoria) {
+        return tranzakciok.stream()
+                .filter(t -> t.getKategoria().equalsIgnoreCase(kategoria))
+                .mapToDouble(Tranzakcio::getOsszeg)
+                .sum();
+    }
