@@ -36,3 +36,9 @@ public class PenzugySzolgaltato {
                 .findFirst()
                 .orElse(0.0);
     }
+
+    public boolean isLimitTullepve(String kategoria) {
+        double limit = getLimitKategoriaSzerint(kategoria);
+        if (limit == 0) return false;
+        return getKoltsegKategoriaSzerint(kategoria) > limit;
+    }
