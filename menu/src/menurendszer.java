@@ -35,3 +35,21 @@ public class Menurendszer {
             }
         }
     }
+
+    private static void tranzakcioMenu() {
+        System.out.print("Összeg (Ft): ");
+        double osszeg = beolvasDouble();
+        System.out.print("Dátum (pl. 2026-06-02): ");
+        String datum = sc.nextLine();
+        System.out.print("Kategória (pl. kaja, szorakozozas): ");
+        String kategoria = sc.nextLine().toLowerCase();
+        System.out.print("Megjegyzés: ");
+        String megjegyzes = sc.nextLine();
+
+        szerviz.ujTranzakcio(osszeg, datum, kategoria, megjegyzes);
+        System.out.println(GREEN + "Tranzakció sikeresen rögzítve!" + RESET);
+
+        if (szerviz.isLimitTullepve(kategoria)) {
+            System.out.println(RED + "FIGYELMEZTETÉS: A(z) '" + kategoria + "' kategória limitjét túllépted!" + RESET);
+        }
+    }
