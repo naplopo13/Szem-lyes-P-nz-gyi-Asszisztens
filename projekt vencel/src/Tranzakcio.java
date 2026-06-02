@@ -1,6 +1,5 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 class Tranzakcio{
@@ -69,4 +68,20 @@ public class DataManager{
             System.err.println("Hiba a tranzakciók mentésekor: " + e.getMessage());
         }
     }
+    public List<Tranzakcio> betoltTranzakciok() {
+        List<Tranzakcio> list = new ArrayList<>();
+        File f = new File(TRANZAKCIO_FAJL);
+        if (!f.exists()) return list;
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String sor;
+            while ((sor = br.readLine()) != null) {
+                Tranzakcio t = Tranzakcio.fromString(sor);
+                if (t != null) list.add(t);
+            }
+        } catch (IOException e) {
+            System.err.println("Hiba a tranzakciók betöltésekor.");
+        }
+        return list;
+    }
+
 }
