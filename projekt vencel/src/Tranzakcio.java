@@ -43,5 +43,13 @@ class Limit{
         this.kategoria=kategoria.toLowerCase();
         this.maxOsszeg=maxOsszeg;
     }
-    
+    @Override
+    public String toString() {
+        return kategoria + ";" + maxOsszeg;
+    }
+    public static Limit fromString(String sor){
+        String[] darabok = sor.split(";");
+        if (darabok.length < 2) return null;
+        return new Limit(darabok[0], Double.parseDouble(darabok[1]));
+    }
 }
