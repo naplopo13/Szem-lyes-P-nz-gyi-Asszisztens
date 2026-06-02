@@ -23,4 +23,10 @@ class Tranzakcio{
     public String getMegjegyzes() {
         return megjegyzes;
     }
+
+    @Override
+    public String toString(){
+        return osszeg+";"+datum+";"+kategoria+";"+megjegyzes;
+    }
+    
 }
