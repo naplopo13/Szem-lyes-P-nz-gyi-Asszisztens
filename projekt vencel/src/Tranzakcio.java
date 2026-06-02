@@ -28,5 +28,10 @@ class Tranzakcio{
     public String toString(){
         return osszeg+";"+datum+";"+kategoria+";"+megjegyzes;
     }
-    
+
+    public static Tranzakcio fromString(String sor){
+        String[] darabok=sor.split(";");
+        if (darabok.length<4)return null;
+        return new Tranzakcio(Double.parseDouble(darabok[0]),darabok[1],darabok[2],darabok[3] );
+    }
 }
