@@ -15,3 +15,9 @@ public class PenzugySzolgaltato {
         tranzakciok.add(new Tranzakcio(osszeg, datum, kategoria, megjegyzes));
         dataManager.mentTranzakciok(tranzakciok);
     }
+
+    public void ujLimit(String kategoria, double maxOsszeg) {
+        limitek.removeIf(l -> l.getKategoria().equalsIgnoreCase(kategoria));
+        limitek.add(new Limit(kategoria, maxOsszeg));
+        dataManager.mentLimitek(limitek);
+    }
