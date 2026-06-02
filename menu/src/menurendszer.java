@@ -80,8 +80,6 @@ public class Menurendszer {
         }
     }
 
-    // --- STRUGGLE-FREE INPUT VALIDÁCIÓ ---
-
     private static int beolvasInt() {
         while (true) {
             try {
@@ -109,7 +107,6 @@ public class Menurendszer {
     }
 
     private static void KijelzoTiszta() {
-        // Egyszerű konzol gördítés a tisztább hatásért
         System.out.print("\033[H\033[2J");
 
     }
