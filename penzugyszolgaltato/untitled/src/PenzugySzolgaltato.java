@@ -66,3 +66,11 @@ public class PenzugySzolgaltato {
         sb.append("] ").append(String.format("%.0f", szazalek)).append("%");
         return kategoria + ": " + koltes + " / " + limit + " Ft " + sb.toString();
     }
+
+    public Set<String> getMindenKategoria() {
+        Set<String> kategoriak = new HashSet<>();
+        for (Tranzakcio t : tranzakciok) kategoriak.add(t.getKategoria());
+        for (Limit l : limitek) kategoriak.add(l.getKategoria());
+        return kategoriak;
+    }
+}
