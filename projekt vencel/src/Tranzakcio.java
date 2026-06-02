@@ -10,4 +10,17 @@ class Tranzakcio{
         this.kategoria = kategoria.toLowerCase();
         this.megjegyzes = megjegyzes;
     }
+
+    public double getOsszeg() {
+        return osszeg;
+    }
+    public String getDatum() {
+        return datum;
+    }
+    public String getKategoria() {
+        return kategoria;
+    }
+    public String getMegjegyzes() {
+        return megjegyzes;
+    }
 }
