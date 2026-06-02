@@ -4,6 +4,7 @@ public class Menurendszer {
     private static final PenzugySzolgaltato szerviz = new PenzugySzolgaltato();
     private static final Scanner sc = new Scanner(System.in);
 
+    // ANSI kódok a konzol színezéséhez
     public static final String RESET = "\u001B[0m";
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
@@ -13,7 +14,7 @@ public class Menurendszer {
         int valasztas = -1;
         while (valasztas != 0) {
             KijelzoTiszta();
-            System.out.println(" Személyes Pénzügyi asszisztens");
+            System.out.println("Személyes Pénzügyi Asszisztens");
             System.out.println("1. Új tranzakció hozzáadása");
             System.out.println("2. Költségvetési limit beállítása");
             System.out.println("3. Havi összesítés és ASCII riport");
@@ -49,8 +50,9 @@ public class Menurendszer {
         szerviz.ujTranzakcio(osszeg, datum, kategoria, megjegyzes);
         System.out.println(GREEN + "Tranzakció sikeresen rögzítve!" + RESET);
 
+        // Limit túllépés azonnali csekkolása
         if (szerviz.isLimitTullepve(kategoria)) {
-            System.out.println(RED + "F!!GYELMEZTETÉS: A(z) '" + kategoria + "' kategória limitjét túllépted!" + RESET);
+            System.out.println(RED + "FIGYELMEZTETÉS: A(z) '" + kategoria + "' kategória limitjét túllépted!" + RESET);
         }
     }
 
@@ -65,7 +67,7 @@ public class Menurendszer {
     }
 
     private static void riportMenu() {
-        System.out.println("\n Havi riport");
+        System.out.println("\n HAVI RIPORT & ASCII DIAGRAMOK");
         System.out.println("Összes költés: " + YELLOW + szerviz.getOsszKoltseg() + " Ft" + RESET);
         System.out.println("----------------------------------------");
 
@@ -78,13 +80,15 @@ public class Menurendszer {
         }
     }
 
+    // --- STRUGGLE-FREE INPUT VALIDÁCIÓ ---
+
     private static int beolvasInt() {
         while (true) {
             try {
                 int szam = Integer.parseInt(sc.nextLine());
                 return szam;
             } catch (NumberFormatException e) {
-                System.out.print(RED + "Hibás formátum! Kérlek számot adj meg: " + RESET);
+                System.out.print(RED + "Hibás formátum!!!! Kérlek számot adj meg: " + RESET);
             }
         }
     }
@@ -94,16 +98,18 @@ public class Menurendszer {
             try {
                 double szam = Double.parseDouble(sc.nextLine());
                 if (szam < 0) {
-                    System.out.print(RED + "Az összeg nem lehet negatív! Adj meg újjat: " + RESET);
+                    System.out.print(RED + "Az összeg nem lehet negatív! Adj meg újat: " + RESET);
                     continue;
                 }
                 return szam;
             } catch (NumberFormatException e) {
-                System.out.print(RED + "Hibás formátum!!!!! Érvényes összeget adj meg vagy lépj ki: " + RESET);
+                System.out.print(RED + "Hibás formátum!!!! Érvényes összeget adj meg: " + RESET);
             }
         }
     }
+
     private static void KijelzoTiszta() {
+        // Egyszerű konzol gördítés a tisztább hatásért
         System.out.print("\033[H\033[2J");
 
     }
