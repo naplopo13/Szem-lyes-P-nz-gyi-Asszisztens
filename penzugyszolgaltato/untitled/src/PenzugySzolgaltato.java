@@ -42,3 +42,7 @@ public class PenzugySzolgaltato {
         if (limit == 0) return false;
         return getKoltsegKategoriaSzerint(kategoria) > limit;
     }
+
+    public double getOsszKoltseg() {
+        return tranzakciok.stream().mapToDouble(Tranzakcio::getOsszeg).sum();
+    }
