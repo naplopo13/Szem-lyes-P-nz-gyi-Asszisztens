@@ -83,5 +83,26 @@ public class DataManager{
         }
         return list;
     }
-
+    public void mentLimitek(List<Limit> list) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(LIMIT_FAJL))) {
+            for (Limit l : list) pw.println(l.toString());
+        } catch (IOException e) {
+            System.err.println("Hiba a limitek mentésekor.");
+        }
+    }
+    public List<Limit> betoltLimitek() {
+        List<Limit> list = new ArrayList<>();
+        if (!f.exists()) return list;
+        File f = new File(LIMIT_FAJL);
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String sor;
+            while ((sor = br.readLine()) != null) {
+                Limit l = Limit.fromString(sor);
+                if (l != null) list.add(l);
+            }
+        } catch (IOException e) {
+            System.err.println("Hiba a limitek betöltésekor.");
+        }
+        return list;
+    }
 }
