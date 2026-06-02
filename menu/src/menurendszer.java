@@ -21,3 +21,17 @@ public class Menurendszer {
             System.out.print("Válassz menüpontot: ");
 
             valasztas = beolvasInt();
+
+            switch (valasztas) {
+                case 1 -> tranzakcioMenu();
+                case 2 -> limitMenu();
+                case 3 -> riportMenu();
+                case 0 -> System.out.println("Köszönjük, hogy használta a programot!");
+                default -> System.out.println(RED + "Érvénytelen menüpont!" + RESET);
+            }
+            if (valasztas != 0) {
+                System.out.println("\nNyomj Enter-t a folytatáshoz...");
+                sc.nextLine();
+            }
+        }
+    }
