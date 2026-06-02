@@ -28,3 +28,11 @@ public class PenzugySzolgaltato {
                 .mapToDouble(Tranzakcio::getOsszeg)
                 .sum();
     }
+
+    public double getLimitKategoriaSzerint(String kategoria) {
+        return limitek.stream()
+                .filter(l -> l.getKategoria().equalsIgnoreCase(kategoria))
+                .mapToDouble(Limit::getMaxOsszeg)
+                .findFirst()
+                .orElse(0.0);
+    }
