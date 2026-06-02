@@ -64,3 +64,7 @@ public class Menurendszer {
         System.out.println(GREEN + "Limit sikeresen beállítva!" + RESET);
     }
 
+    private static void riportMenu() {
+        System.out.println("\n=== HAVI RIPORT & ASCII DIAGRAMOK ===");
+        System.out.println("Összes költés: " + YELLOW + szerviz.getOsszKoltseg() + " Ft" + RESET);
+        System.out.println("----------------------------------------");
