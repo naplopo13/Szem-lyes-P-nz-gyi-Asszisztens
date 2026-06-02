@@ -63,3 +63,6 @@ public class PenzugySzolgaltato {
             if (i < kiertekeltKarakter) sb.append("#");
             else sb.append(".");
         }
+        sb.append("] ").append(String.format("%.0f", szazalek)).append("%");
+        return kategoria + ": " + koltes + " / " + limit + " Ft " + sb.toString();
+    }
