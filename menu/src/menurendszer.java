@@ -53,3 +53,14 @@ public class Menurendszer {
             System.out.println(RED + "FIGYELMEZTETÉS: A(z) '" + kategoria + "' kategória limitjét túllépted!" + RESET);
         }
     }
+
+    private static void limitMenu() {
+        System.out.print("Kategória neve: ");
+        String kategoria = sc.nextLine().toLowerCase();
+        System.out.print("Havi limit összege (Ft): ");
+        double limit = beolvasDouble();
+
+        szerviz.ujLimit(kategoria, limit);
+        System.out.println(GREEN + "Limit sikeresen beállítva!" + RESET);
+    }
+
