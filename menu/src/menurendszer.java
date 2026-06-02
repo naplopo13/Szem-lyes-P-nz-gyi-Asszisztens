@@ -68,3 +68,12 @@ public class Menurendszer {
         System.out.println("\n=== HAVI RIPORT & ASCII DIAGRAMOK ===");
         System.out.println("Összes költés: " + YELLOW + szerviz.getOsszKoltseg() + " Ft" + RESET);
         System.out.println("----------------------------------------");
+
+        for (String kat : szerviz.getMindenKategoria()) {
+            if (szerviz.isLimitTullepve(kat)) {
+                System.out.println(RED + szerviz.getAsciiDiagram(kat) + " [TÚLLÉPVE!]" + RESET);
+            } else {
+                System.out.println(GREEN + szerviz.getAsciiDiagram(kat) + RESET);
+            }
+        }
+    }
