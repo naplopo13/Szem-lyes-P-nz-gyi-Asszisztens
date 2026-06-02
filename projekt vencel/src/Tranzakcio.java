@@ -1,3 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 class Tranzakcio{
     private double osszeg;
     private String datum;
@@ -51,5 +56,17 @@ class Limit{
         String[] darabok = sor.split(";");
         if (darabok.length < 2) return null;
         return new Limit(darabok[0], Double.parseDouble(darabok[1]));
+    }
+}
+
+public class DataManager{
+    private final String TRANZAKCIO_FAJL = "tranzakciok.txt";
+    private final String LIMIT_FAJL = "limitek.txt";
+    public void mentTranzakciok(List<Tranzakcio> list) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(TRANZAKCIO_FAJL))) {
+            for (Tranzakcio t : list) pw.println(t.toString());
+        } catch (IOException e) {
+            System.err.println("Hiba a tranzakciók mentésekor: " + e.getMessage());
+        }
     }
 }
