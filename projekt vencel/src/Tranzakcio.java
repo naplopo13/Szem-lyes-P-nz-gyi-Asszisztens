@@ -39,4 +39,9 @@ class Limit{
     private String kategoria;
     private double maxOsszeg;
 
+    public Limit(String kategoria, double maxOsszeg){
+        this.kategoria=kategoria.toLowerCase();
+        this.maxOsszeg=maxOsszeg;
+    }
+    
 }
