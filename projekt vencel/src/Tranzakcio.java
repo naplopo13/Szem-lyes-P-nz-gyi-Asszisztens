@@ -35,3 +35,8 @@ class Tranzakcio{
         return new Tranzakcio(Double.parseDouble(darabok[0]),darabok[1],darabok[2],darabok[3] );
     }
 }
+class Limit{
+    private String kategoria;
+    private double maxOsszeg;
+
+}
