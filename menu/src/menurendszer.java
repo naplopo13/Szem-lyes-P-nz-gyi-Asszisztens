@@ -77,3 +77,14 @@ public class Menurendszer {
             }
         }
     }
+
+    private static int beolvasInt() {
+        while (true) {
+            try {
+                int szam = Integer.parseInt(sc.nextLine());
+                return szam;
+            } catch (NumberFormatException e) {
+                System.out.print(RED + "Hibás formátum! Kérlek számot adj meg: " + RESET);
+            }
+        }
+    }
